@@ -1,0 +1,19 @@
+<%include partials/header%>
+  <%if (entries.length) {%>
+    <% entries.forEach(function(entry) { %>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <div class="pull-right">
+            <%= entry.published %>
+          </div>
+          <%= entry.title %>
+        </div>
+        <div class="panel panel-body">
+          <%= entry.content %>
+        </div>
+      </div>
+    <%})%>
+  <%} else {%>
+    <p>No entries! <a href="/new-entry">Add One!</a></p>
+  <%}%>
+<%include partials/footer%>
