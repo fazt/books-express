@@ -1,32 +1,54 @@
-module.exports = function (app) {
-  var entries = [];
+const express = require('express');
+const router = express.Router();
+const fs = require('fs');
+const uuidv4 = require('uuid/v4');
 
-  app.locals.entries = entries;
-  
-  app.get('/', (req, res) => {
-    res.render('index');
-  });
+const json_books = fs.readFileSync('src/books.json', 'utf-8');
+let books = JSON.parse(json_books);
 
-  app.get('/new-entry', (req, res) => {
-    res.render('new-entry');
-  });
+router.get('/', (req, res) => {
+  res.render('index', { books });
+});
 
-  app.post('/new-entry', (req, res) => {
-    if (!req.body.title || !req.body.body) {
-      res.status(400).send("Entries must have a title and body");
-      return;
-    }
+router.get('/new-entry', (req, res) => {
+  res.render('new-entry');
+});
 
-    var myNewEntry = {
-      title: req.body.title,
-      content: req.body.body,
-      published: new Date()
-    };
+router.post('/new-entry', (req, res) => {
 
-    entries.push(myNewEntry);
+  const { title, author, image, description } = req.body;
 
-    res.redirect('/');
-  });
+  if (!title || !author || !image || !description) {
+    res.status(400).send("Entries must have a title and body");
+    return;
+  }
 
-  return app;
-}
+  var newBook = {
+    id: uuidv4(),
+    title,
+    author,
+    image,
+    description
+  };
+
+  // add a new book to the array
+  books.push(newBook);
+
+  // saving the array in a file
+  const json_books = JSON.stringify(books);
+  fs.writeFileSync('src/books.json', json_books, 'utf-8');
+
+  res.redirect('/');
+});
+
+router.get('/delete/:id', (req, res) => {
+  books = books.filter(book => book.id != req.params.id);
+
+  // saving data
+  const json_books = JSON.stringify(books);
+  fs.writeFileSync('src/books.json', json_books, 'utf-8');
+
+  res.redirect('/')
+});
+
+module.exports = router;

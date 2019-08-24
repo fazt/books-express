@@ -1,30 +1,46 @@
-<% include partials/header%>
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="col-xs-8 col-xs-offset-2">
-  <h2 class="text-center">WRITE A NEW ENTRY</h2>
+<head>
+  <% include partials/header %>
+  <title>New Book</title>
+</head>
 
-  <form method="post" role="form">
+<body>
 
-    <div class="form-group">
-      <label for="title">Title</label>
-      <input name="title" id="title" type="text" class="form-control"  placeholder="Entry a New Title" required>
-    </div>
+  <% include partials/navigation %>
+  <div class="container p-4">
+    <form method="POST" target="/new-entry" class="card card-body">
 
-    <div class="form-group">
-      <label for="body">Entry Text</label>
-      <textarea
-        class="form-control"
-        id="body"
-        name="body"
-        rows="3"
-        required>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input name="title" type="text" class="form-control" placeholder="Entry a New Title" autofocus required>
+      </div>
+
+      <div class="form-group">
+        <label for="title">Author</label>
+        <input name="author" type="text" class="form-control" placeholder="Author" autofocus required>
+      </div>
+      
+      <div class="form-group">
+        <label for="image">Image</label>
+        <input type="url" name="image" class="form-control" placeholder="http://website.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" name="description" rows="2" required>
         </textarea>
-    </div>
+      </div>
 
-    <div class="form-group">
-      <input type="submit" value="Post Entry" class="btn btn-primary">
-    </div>
-  </form>
-</div>
+      <div class="form-group">
+        <input type="submit" value="Post Entry" class="btn btn-primary">
+      </div>
+    </form>
 
-<% include partials/footer%>
+  </div>
+
+  <% include partials/footer%>
+</body>
+
+</html>
