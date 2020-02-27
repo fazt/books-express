@@ -1,27 +1,28 @@
-const express = require('express');
-const path    = require('path');
-const logger  = require('morgan');
-const http = require('http');
-const bodyParser = require('body-parser');
+const express = require("express");
+const path = require("path");
+const morgan = require("morgan");
 
+// Initializations
 const app = express();
 
-app.set('views', path.resolve(__dirname, 'views'));
-app.set('view engine', 'ejs');
+// Settings
+app.set("port", process.env.PORT || 3000);
+app.set("views", path.resolve(__dirname, "views"));
+app.set("view engine", "ejs");
 
-// middlewares
-app.use(logger('dev'));
-app.use(bodyParser.urlencoded({extended: false}));
+// Middlewares
+app.use(morgan("dev"));
+app.use(express.urlencoded({ extended: false }));
 
-// routes
-require('./routes')(app);
+// Routes
+app.use(require("./routes/entries.routes"));
 
 // 404 handler
 app.use((req, res) => {
   res.status(404).render("404");
 });
 
-// starting the app
-http.createServer(app).listen(3000, () => {
-  console.log('GuestBook App started on port 3000');
+// Starting the app
+app.listen(app.get("port"), () => {
+  console.log("GuestBook App started on port", app.get("port"));
 });
