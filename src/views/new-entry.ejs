@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-  <% include partials/header %>
+  <%- include('partials/header') %>
   <title>New Book</title>
 </head>
 
 <body>
 
-  <% include partials/navigation %>
+  <%- include('partials/navigation') %>
   <div class="container p-4">
     <form method="POST" target="/new-entry" class="card card-body">
 
@@ -40,7 +40,7 @@
 
   </div>
 
-  <% include partials/footer%>
+  <%- include('partials/footer')%>
 </body>
 
 </html>

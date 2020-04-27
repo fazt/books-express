@@ -1,7 +1,8 @@
 const express = require('express');
-const router = express.Router();
 const fs = require('fs');
-const uuidv4 = require('uuid/v4');
+const uuid = require('uuid');
+
+const router = express.Router();
 
 const json_books = fs.readFileSync('src/books.json', 'utf-8');
 let books = JSON.parse(json_books);
@@ -24,7 +25,7 @@ router.post('/new-entry', (req, res) => {
   }
 
   var newBook = {
-    id: uuidv4(),
+    id: uuid.v4(),
     title,
     author,
     image,
@@ -42,11 +43,12 @@ router.post('/new-entry', (req, res) => {
 });
 
 router.get('/delete/:id', (req, res) => {
+  console.log({books})
   books = books.filter(book => book.id != req.params.id);
 
   // saving data
   const json_books = JSON.stringify(books);
-  fs.writeFileSync('src/books.json', json_books, 'utf-8');
+  fs.writeFileSync('src/books.json', json_books);
 
   res.redirect('/')
 });

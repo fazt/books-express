@@ -15,3 +15,6 @@ npm run dev
 
 # Mi social Accounts
 - [Youtube](https://www.youtube.com/channel/UCX9NJ471o7Wie1DQe94RVIg)
+
+# Considerations
+* Make sure nodemon ignores the file `src/books.json`. 

@@ -5,7 +5,7 @@ const logger  = require('morgan');
 const app = express();
 
 // Settings
-app.set('port', 5000);
+app.set('port', process.env.PORT || 5000);
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
