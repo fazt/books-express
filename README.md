@@ -12,6 +12,20 @@ npm install
 npm run dev
 ```
 
+# Environment Variables
+* `PORT`, this is the http port of the server. by default is `5000`. 
+
+# Docker
+```
+docker build -t express-books .
+```
+
+```
+docker run -p 80:5000 express-books .
+```
+
+then visit: `http://localhost`
+
 # Video Tutorial
 * [Youtube (Spanish)](https://youtu.be/IRqaH_jhyT8)
 
