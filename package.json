@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node ./src/index.js",
-    "dev": "nodemon ./src/index.js --ignore src/books.json"
+    "start": "node ./dist/index.js",
+    "dev": "nodemon ./src/index.js --ignore src/books.json --exec babel-node",
+    "build": "babel src -d dist && npm run copyviews && npm run copypublic",
+    "copyviews": "ncp ./src/views/ ./dist/views/",
+    "copypublic": "ncp ./src/public/ ./dist/public/",
+    "clean": "rimraf dist"
   },
   "license": "MIT",
   "dependencies": {
@@ -15,6 +19,12 @@
     "uuid": "^8.2.0"
   },
   "devDependencies": {
-    "npm-check-updates": "^7.0.1"
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/node": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "ncp": "^2.0.0",
+    "npm-check-updates": "^7.0.1",
+    "rimraf": "^3.0.2"
   }
 }
