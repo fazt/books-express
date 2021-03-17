@@ -3,10 +3,12 @@ import path from "path";
 import morgan from "morgan";
 import routes from "./routes";
 
+import config from "./config";
+
 const app = express();
 
 // Settings
-app.set("port", process.env.PORT || 5000);
+app.set("port", config.PORT);
 app.set("views", path.resolve(__dirname, "views"));
 app.set("view engine", "ejs");
 
