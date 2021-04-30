@@ -1,6 +1,6 @@
-# GuestBook App
+# Express Books
 
-this is a Online Books Application to put in practice your basic Node knowledge
+Express Books is Web Application to save a list of your favorite books. All data are store in a Json file.
 
 # ScreenShoot
 
@@ -45,3 +45,10 @@ then visit: `http://localhost`
 ## Reference
 
 - https://babeljs.io/docs/en/babel-plugin-transform-runtime
+
+### Todo
+
+- [ ] Add user authentication
+- [ ] Allow to download the json data
+- [ ] Publish a docker container image on dockerhub
+- [x] Change to dark theme
