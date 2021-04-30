@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('partials/header') %>
+    <title>Page Not found</title>
+</head>
+
+<body>
+
+
+  <%- include('partials/navigation') %>
+
+    <div class="container p-4">
+      <div class="col-md-4 offset-md-4">
+        <div class="card card-body">
+          <h1>
+            About
+          </h1>
+
+          <p>
+            APPID:
+            <strong style="font-size: 3rem;">
+              <%= APPID %>
+            </strong>
+          </p>
+
+          <p>
+            HTTP PORT:
+            <strong>
+              <%= PORT %>
+            </strong>
+          </p>
+
+        </div>
+      </div>
+    </div>
+
+</body>
+
+</html>

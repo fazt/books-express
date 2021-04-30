@@ -18,6 +18,7 @@ npm start
 # Environment Variables
 
 - `PORT`, this is the http port of the server. by default is `5000`.
+- `APPID` - (optional), this is an unique ID for the application to identify in a load balancer
 
 Also you can create a .env file with the environment variables mentioned above.
 
