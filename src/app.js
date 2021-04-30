@@ -16,6 +16,13 @@ app.set("view engine", "ejs");
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));
 
+// global variables
+app.use((req, res, next) => {
+  console.log(config.APPID)
+  app.locals.APPID = config.APPID;
+  next();
+});
+
 // Routes
 app.use(routes);
 
