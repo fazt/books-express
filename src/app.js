@@ -1,11 +1,13 @@
 import express from "express";
 import path from "path";
 import morgan from "morgan";
-import routes from "./routes";
+import routes from "./routes/index.js";
 
-import config from "./config";
+import config from "./config.js";
+import {fileURLToPath} from "url";
 
 const app = express();
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Settings
 app.set("port", config.PORT);

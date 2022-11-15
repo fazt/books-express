@@ -6,7 +6,7 @@ import {
   renderNewEntryPage,
   createNewEntry,
   deleteBook,
-} from "../controllers/index.controller";
+} from "../controllers/index.controller.js";
 
 const router = Router();
 

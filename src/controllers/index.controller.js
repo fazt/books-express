@@ -1,4 +1,4 @@
-import config from "../config";
+import config from "../config.js";
 import fs from "fs";
 import { v4 } from "uuid";
 
