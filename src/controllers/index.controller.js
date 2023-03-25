@@ -38,7 +38,6 @@ export const createNewEntry = (req, res) => {
 };
 
 export const deleteBook = (req, res) => {
-  console.log({ books });
   books = books.filter((book) => book.id != req.params.id);
 
   // saving data
