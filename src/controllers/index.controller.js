@@ -1,11 +1,12 @@
 import config from "../config.js";
-import fs from "fs";
 import { v4 } from "uuid";
+import { addItem, deleteItem, readData } from "../libs/jsonDb.js";
 
-const json_books = fs.readFileSync("src/books.json", "utf-8");
-let books = JSON.parse(json_books);
-
-export const renderIndexPage = (req, res) => res.render("index", { books });
+export const renderIndexPage = (req, res) => {
+  const books = readData("books.json");
+  console.log(books);
+  res.render("index", { books });
+};
 
 export const renderAboutPage = (req, res) => res.render("about", config);
 
@@ -15,8 +16,7 @@ export const createNewEntry = (req, res) => {
   const { title, author, image, description } = req.body;
 
   if (!title || !author || !image || !description) {
-    res.status(400).send("Entries must have a title and body");
-    return;
+    return res.status(400).send("Entries must have a title and body");
   }
 
   var newBook = {
@@ -27,21 +27,14 @@ export const createNewEntry = (req, res) => {
     description,
   };
 
-  // add a new book to the array
-  books.push(newBook);
-
   // saving the array in a file
-  const json_books = JSON.stringify(books);
-  fs.writeFileSync("src/books.json", json_books, "utf-8");
+  addItem(newBook);
 
   res.redirect("/");
 };
 
 export const deleteBook = (req, res) => {
-  books = books.filter((book) => book.id != req.params.id);
-
-  // saving data
-  const json_books = JSON.stringify(books);
-  fs.writeFileSync("src/books.json", json_books);
+  console.log(req.params.id);
+  deleteItem(req.params.id);
   res.redirect("/");
 };
