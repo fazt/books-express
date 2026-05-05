@@ -1,6 +1,6 @@
 {
   "name": "libro_notas_nodejs",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -9,13 +9,13 @@
   },
   "license": "MIT",
   "dependencies": {
-    "dotenv": "^16.4.5",
-    "ejs": "^3.1.10",
-    "express": "^4.19.2",
-    "morgan": "^1.10.0",
-    "uuid": "^10.0.0"
+    "dotenv": "^17.4.2",
+    "ejs": "^5.0.2",
+    "express": "^5.2.1",
+    "morgan": "^1.10.1",
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.4"
+    "nodemon": "^3.1.14"
   }
 }
